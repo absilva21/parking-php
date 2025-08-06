@@ -1,7 +1,10 @@
 <?php
 
+ /*
+    representa um veículo de um ticket
+ */
 
-    class Car{
+class Car{
         private String $licensePlate;
         private String $color;
         private String $model;

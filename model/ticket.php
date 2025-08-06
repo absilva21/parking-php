@@ -1,19 +1,26 @@
 <?php 
   include ("car.php");
 
+  //Representa um ticket de estacionamento
   class Ticket{
     private int $id;
     private Car $car;
     private DateTime $input;
     private DateTime $output;
     private float $priceTotal;
+    private float $priceReference;
+    private float $priceMin;
 
+    private bool $finished;
 
-    public function __construct($id,$car,$input){
+    public function __construct($id,$car,$input,$reference,$min){
         $this->id = $id;
         $this->car = $car;
         $this->input = $input;
-        $this->priceTotal = 3.0;
+        $this->priceTotal = 0.0;
+        $this->priceReference = $reference;
+        $this->min = $min;
+        $this->finished = false;
     }
 
 /**
@@ -128,6 +135,75 @@ return $this->priceTotal;
 public function setPriceTotal($priceTotal)
 {
 $this->priceTotal = $priceTotal;
+return $this;
+}
+
+/**
+* Get the value of priceReference
+*
+* @return  mixed
+*/
+public function getPriceReference()
+{
+return $this->priceReference;
+}
+
+/**
+* Set the value of priceReference
+*
+* @param   mixed  $priceReference  
+*
+* @return  self
+*/
+public function setPriceReference($priceReference)
+{
+$this->priceReference = $priceReference;
+return $this;
+}
+
+/**
+* Get the value of priceMin
+*
+* @return  mixed
+*/
+public function getPriceMin()
+{
+return $this->priceMin;
+}
+
+/**
+* Set the value of priceMin
+*
+* @param   mixed  $priceMin  
+*
+* @return  self
+*/
+public function setPriceMin($priceMin)
+{
+$this->priceMin = $priceMin;
+return $this;
+}
+
+/**
+* Get the value of finished
+*
+* @return  mixed
+*/
+public function getFinished()
+{
+return $this->finished;
+}
+
+/**
+* Set the value of finished
+*
+* @param   mixed  $finished  
+*
+* @return  self
+*/
+public function setFinished($finished)
+{
+$this->finished = $finished;
 return $this;
 }
   }

@@ -1,5 +1,5 @@
 <?php 
-  include ("car.php");
+  include_once("car.php");
 
   //Representa um ticket de estacionamento
   class Ticket{

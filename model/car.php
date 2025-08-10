@@ -2,9 +2,11 @@
 
  /*
     representa um veículo de um ticket
+    cor e modelo serão usados futuramente e alimentados por api externa
  */
 
 class Car{
+        private int $id;
         private String $licensePlate;
         private String $color;
         private String $model;
@@ -83,4 +85,27 @@ public function setModel($model)
 $this->model = $model;
 return $this;
 }
-    }
+
+/**
+* Get the value of id
+*
+* @return  mixed
+*/
+public function getId()
+{
+return $this->id;
+}
+
+/**
+* Set the value of id
+*
+* @param   mixed  $id  
+*
+* @return  self
+*/
+public function setId($id)
+{
+$this->id = $id;
+return $this;
+}
+ }

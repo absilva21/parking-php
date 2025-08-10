@@ -1,5 +1,5 @@
 <?php
-
+//representa um a conexão com um banco de dados
 class DB{
    private $dbConect;
    private $host;

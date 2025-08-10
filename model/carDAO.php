@@ -26,6 +26,50 @@ class carDAO{
         }  
         return $result;
     }
+
+    public function getByLincense($l):?Car{
+        $car = null;
+        $idCar = 0;
+        $license = $l;
+        $color = "";
+        $model = "";
+        $stmt = $this->db->getDbConect()->prepare("SELECT * FROM  car where license = ?");
+        $stmt->bind_param("s",$l);
+        if($stmt->execute()){
+            $stmt->bind_result($idCar,$license,$color,$model);
+            if($stmt->fetch()){
+                $car = new Car($license,$color,$model);
+                $car->setId($idCar);
+                $stmt->close();
+            }
+        }else{
+            throw new Exception("não foi possível fazer a inserção no banco ".$stmt->error);
+        }
+        
+        return $car;
+    }
+
+   public function getById($id):?Car{
+    $car = null;
+    $idCar = 0;
+    $license = "";
+    $color = "";
+    $model = "";
+    $stmt = $this->db->getDbConect()->prepare("SELECT * FROM  car where idcar = ?");
+    $stmt->bind_param("i",$id);
+    if($stmt->execute()){
+        $stmt->bind_result($idCar,$license,$color,$model);
+        if($stmt->fetch()){
+            $car = new Car($license,$color,$model);
+            $car->setId($id);
+            $stmt->close();
+        }
+    }else{
+        throw new Exception("não foi possível fazer a inserção no banco ".$stmt->error);
+    }
+
+    return $car;
+   }
 /**
 * Get the value of db
 *

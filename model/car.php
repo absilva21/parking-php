@@ -17,6 +17,8 @@ class Car{
             $this->model = $model;
         }
 
+        
+
 /**
 * Get the value of licensePlate
 *

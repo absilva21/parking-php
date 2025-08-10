@@ -7,8 +7,14 @@
     $tickets = [new Ticket(1,new Car("PBT4008","",""),new DateTime(),3,2.5)];
     $db = new DB("localhost","root","parking2025@","parking");
     $carDAO = new carDAO($db);
-    if($carDAO->insertCar(new Car("PBT4008","",""))){
-        echo "ok";
+
+    $car = $carDAO->getByLincense("PBT4008");
+
+    if(is_null($car)){
+        echo "carro não cadastrado\n<br>";
     }else{
-        echo "não funciona";
+        echo "código: ".$car->getId()."\n<br>";
+        echo "placa: ".$car->getLicensePlate()."\n<br>";
+        echo "cor: ".$car->getColor()."\n<br>";
+        echo "modelo: ".$car->getModel()."\n<br>";
     }

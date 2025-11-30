@@ -49,6 +49,22 @@ class carDAO{
         return $car;
     }
 
+    public function update($car):bool{
+        $result = false;
+        $stmt = $this->db->getDbConect()->prepare("UPDATE car SET license = ?, cor = ?, model = ? WHERE = idcar =  ?");
+
+        $stmt->bind_param("sssi",$car->getByLincense(),$car->getColor(),$car->getModel(),$car->getId());
+
+        if( $stmt->execute()){
+            $result = true;
+            $stmt->close();
+        }else{
+            throw new Exception("não foi possível fazer a inserção no banco ".$stmt->error);
+        }
+
+        return $result;
+    }
+
    public function getById($id):?Car{
     $car = null;
     $idCar = 0;
